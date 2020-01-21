@@ -1,0 +1,10 @@
+textarea{
+    height: 30vh;
+}
+.input-group-prepend{
+    width:30%;
+}
+.input-group-text{
+    width:100%;
+    overflow: hidden;
+}

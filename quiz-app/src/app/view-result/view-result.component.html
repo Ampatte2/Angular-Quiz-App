@@ -1,0 +1,28 @@
+<app-searchbar class="float-right"></app-searchbar>
+<div *ngFor="let item of Problem; let i=index" class="container">
+    <h1 class="text-center">{{item.title}}</h1>
+    <p class="alert alert-success" *ngIf="success">Added To MyProblems</p>
+
+    
+        <div class="img-div">
+        <img src="{{item.img}}" default="{{item.framework}}">
+        </div>
+        <div class="text">{{item.description}}</div>
+    
+    
+    
+    
+        <div id="answer" class="text" [ngbCollapse]="isCollapsed">
+            {{item.answer}}
+            
+        </div>
+        
+        <div class="answer-box row">
+            <button class="btn btn-outline-primary col-sm" (click)="addToMyProblems(Problem[0].id)">Add Problem</button>
+            <div class="float-left text-uppercase col-sm" >{{item.framework}}</div>            
+            <button class="btn btn-outline-primary float-right col-sm" (click)="isCollapsed= !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="answer">Show Answer</button>
+        </div>
+    
+    
+    
+</div>

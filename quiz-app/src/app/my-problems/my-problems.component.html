@@ -1,0 +1,24 @@
+<nav class="navbar navbar-light bg-light">
+    <app-problem-modal></app-problem-modal>
+    <app-searchbar view="myproblems"></app-searchbar>    
+</nav>
+
+<mat-grid-list [cols]="gridCol" rowHeight="1:1" gutterSize="30px">
+    <mat-grid-tile *ngFor="let item of MyProblemList; let index=i" >
+        <mat-grid-tile-header>
+            <div class="mat-grid-list-text">{{item.difficulty}}</div>
+            
+        </mat-grid-tile-header>
+        
+        {{item.title}}
+        <mat-grid-tile-footer>
+            <div class="mat-grid-list-text"><button class="btn btn-primary" (click)="navigate(item.id)">Go to Problem</button></div>
+            
+        </mat-grid-tile-footer>
+        
+        
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+

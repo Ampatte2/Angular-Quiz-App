@@ -1,0 +1,17 @@
+.mat-grid-tile{
+    background-color:#343a40;
+    border-radius: 5px;
+    color:white;
+}
+
+.mat-grid-list-text-2{
+    text-align:center;
+    font-size: 30px;
+ }
+ .mat-grid-tile-header{
+     text-align: center;
+ }
+ 
+ .centered-div{
+     text-align: center;
+ }

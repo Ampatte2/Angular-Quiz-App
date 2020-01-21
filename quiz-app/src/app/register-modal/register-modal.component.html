@@ -1,0 +1,36 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Register</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+    </div>
+        <div class="modal-body">
+            <form [formGroup]="registerForm" (ngSubmit)="submit()">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Username</span>
+                    </div>
+                    <input class="form-control" formControlName="username" placeholder="Username">
+                </div>
+                <div *ngIf="this.error">Username Taken</div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Password</span>
+                    </div>
+                    <input class="form-control" [ngClass]="{'is-invalid': submitted && f.password.errors}" formControlName="password" placeholder="Password" type="password"><br>
+                </div>
+                <div *ngIf="f.password.errors">Password must be 6 characters long</div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Confirm Password</span>
+                    </div>
+                    <input class="form-control" [ngClass]="{'is-invalid': submitted && f.confirmPassword.errors}" formControlName="confirmPassword" placeholder="Confirm Password" type="password">
+                </div>
+                <div *ngIf="this.submitted && this.registerForm.invalid">Passwords Do Not Match</div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-dark" id="submit" value="Submit">Save</button>
+                </div>
+            </form>
+        </div>
+</ng-template>
+
+<a (click)="open(content)">Register</a>

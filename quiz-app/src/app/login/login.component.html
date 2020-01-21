@@ -1,0 +1,29 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Login</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+    </div>
+        <div class="modal-body">
+            <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Username</span>
+                    </div>
+                    <input class="form-control" [ngClass]="{'is-invalid': this.error}" formControlName="username" placeholder="Username">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Password</span>
+                    </div>
+                    <input class="form-control" [ngClass]="{'is-invalid': this.error}" formControlName="password" placeholder="Password" type="password"><br>
+                </div>
+                
+                <div class="modal-footer">
+                    <div *ngIf="this.error">Incorrect Username or Password</div>
+                    <button type="submit" class="btn btn-outline-dark" id="submit" value="Submit">Login</button>
+                </div>
+            </form>
+        </div>
+</ng-template>
+
+<a (click)="open(content)">Login</a>

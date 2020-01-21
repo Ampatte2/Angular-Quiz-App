@@ -1,0 +1,15 @@
+<form class="form-inline md-form form-sm mt-0" (ngSubmit)="submit()">
+    <label for="description">Search</label>
+    <input class="form-control" aria-label="Search" type="text" name="description" [(ngModel)]="description">
+    <select class="browser-default custom-select" name="framework" id="framework" [(ngModel)]="framework">
+        <option value="" selected disabled>Select Framework</option>
+        <option value="angular">Angular</option>
+        <option value="react">React</option>
+        <option value="node.js">Node.js</option>
+        <option value="mysql">MySQL</option>
+        <option value=".net">.Net</option>
+        <option value="java">Java</option>
+    </select>
+    <button class="form-control"type="submit">Submit</button>
+</form>
+

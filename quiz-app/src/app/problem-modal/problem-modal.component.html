@@ -1,0 +1,64 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add Question</h4>
+        <button type="button" class="close" aria-label="Close"(click)="modal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="problemForm" (ngSubmit)="submit()">
+            <div class="input-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Title</span>
+                </div>
+                <input formControlName="title" class="form-control"  [ngClass]="{'is-invalid': !this.titleError}"name="title" [(ngModel)]="newProblem.title" placeholder="title"/>
+                
+            </div>
+            <div *ngIf="!this.titleError" class="alert">Title Must Be Between 5-35 Characters</div>
+            <div class="input-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Description</span>
+                </div>
+                <textarea formControlName="description" class="form-control" [ngClass]="{'is-invalid': !this.descriptionError}" type="text-area"name="description" [(ngModel)]="newProblem.description" placeholder="description"></textarea>
+            </div>
+            <div class="input-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Answer</span>
+                </div>
+                <textarea formControlName="answer" class="form-control" [ngClass]="{'is-invalid': !this.answerError}" name="answer" [(ngModel)]="newProblem.answer" placeholder="answer"></textarea>
+            </div>
+            <div class="input-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Framework</span>
+                </div>
+                <select formControlName="framework" class="form-control" [ngClass]="{'is-invalid': !this.frameworkError}" name="framework" [(ngModel)]="newProblem.framework" placeholder="framework">
+                    <option value="angular">Angular</option>
+                    <option value="react">React</option>
+                    <option value="node.js">Node.js</option>
+                    <option value="mysql">MySQL</option>
+                    <option value=".net">.Net</option>
+                    <option value="java">Java</option>
+                </select>
+            </div>
+            <div class="input-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Difficulty</span>
+                </div>
+                <select formControlName="difficulty" class="form-control" [ngClass]="{'is-invalid': !this.difficultyError}" name="difficulty" [(ngModel)]="newProblem.difficulty" placeholder="difficulty">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="expert">Expert</option>
+                </select>
+            </div>
+            <div class="input-group input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Image</span>
+                </div>
+                <input formControlName="img" class="form-control" [ngClass]="{'is-invalid': !this.urlError}" name="img" [(ngModel)]="newProblem.img" type="url" placeholder="Please Enter URL Link To Image"/>
+            </div>
+            <div class="modal-footer" >
+                <button type="button" *ngIf="!this.error"class="btn btn-outline-dark" (click)="submit()" id="submit" value="Submit">Save</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<button class="btn btn-lg btn-dark" (click)="open(content)">Add A Problem</button>

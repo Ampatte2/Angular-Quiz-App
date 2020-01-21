@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light bg-light">
+    <h1>Results</h1>
+    <app-searchbar view="problem"></app-searchbar>
+    
+</nav>
+<h2 *ngIf="Error" class="text-center">No Results For That Search</h2>
+<mat-grid-list [cols]="gridCol" rowHeight="1:1" gutterSize="30px">
+    <mat-grid-tile *ngFor="let item of Problem; let index=i" >
+        <mat-grid-tile-header>
+            <div class="mat-grid-list-text">{{item.difficulty}}</div>
+            
+        </mat-grid-tile-header>
+        
+        {{item.title}}
+        <mat-grid-tile-footer>
+            <div class="mat-grid-list-text"><button class="btn btn-primary" (click)="navigateToView(item.id)">Go to Problem</button></div>
+            
+        </mat-grid-tile-footer>
+        
+        
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+
