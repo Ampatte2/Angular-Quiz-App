@@ -14,20 +14,20 @@ export class ProblemEffects{
 
     GetProblems$: Observable<Action> = createEffect(()=>
         this.action$.pipe(ofType(ProblemActions.GetProblem),
-        mergeMap((action)=> this.http.get(`${environment.serverUrl}/category?type=${action.payload}`).pipe(map(data=>ProblemActions.SuccessGetProblem({data}))))
+        mergeMap((action)=> this.http.get(`/category?type=${action.payload}`).pipe(map(data=>ProblemActions.SuccessGetProblem({data}))))
         )
     )
 
     MyProblems$: Observable<Action> = createEffect(()=>
         this.action$.pipe(ofType(ProblemActions.MyProblems), 
-        mergeMap((action)=>this.http.get(`${environment.serverUrl}/myproblems?data=${action.user}`).pipe(map(data=>ProblemActions.SuccessMyProblems({data}))))
+        mergeMap((action)=>this.http.get(`/myproblems?data=${action.user}`).pipe(map(data=>ProblemActions.SuccessMyProblems({data}))))
         
         )
     )    
 
     CreateProblem$: Observable<Action> = createEffect(()=>
         this.action$.pipe(ofType(ProblemActions.CreateProblem), 
-        mergeMap((action)=>this.http.post(`${environment.serverUrl}/createproblem`, action).pipe(map((data: any)=>ProblemActions.AddProblem({userId: data.userId, problemId: data.problemId})
+        mergeMap((action)=>this.http.post(`/createproblem`, action).pipe(map((data: any)=>ProblemActions.AddProblem({userId: data.userId, problemId: data.problemId})
         )))
         
         )
@@ -35,12 +35,12 @@ export class ProblemEffects{
 
     AddProblem$: Observable<Action> = createEffect(()=>
         this.action$.pipe(ofType(ProblemActions.AddProblem),
-        mergeMap((action)=>this.http.post(`${environment.serverUrl}/addproblem`, action).pipe(map((data: any)=>ProblemActions.MyProblems({user: parseInt(data.user)}))))
+        mergeMap((action)=>this.http.post(`/addproblem`, action).pipe(map((data: any)=>ProblemActions.MyProblems({user: parseInt(data.user)}))))
     )
     )
 
     Result$: Observable<Action> = createEffect(()=>this.action$.pipe(ofType(ProblemActions.Result),
-        mergeMap((action)=>this.http.post(`${environment.serverUrl}/search`, action).pipe(map((data:any)=>ProblemActions.SuccessResult({data}))))
+        mergeMap((action)=>this.http.post(`/search`, action).pipe(map((data:any)=>ProblemActions.SuccessResult({data}))))
     ))
     
 }

@@ -46,6 +46,7 @@ export class RegisterModalComponent{
       this.authService.register(this.user).subscribe((data:any)=>{
         if(data.error){
           this.error= true;
+          console.log(data.error)
         }else{
           this.authService.login(this.user).subscribe(data=>{
             console.log("login")

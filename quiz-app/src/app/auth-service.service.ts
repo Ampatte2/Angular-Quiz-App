@@ -30,7 +30,7 @@ export class AuthService{
         }
 
         if(user.username !=="" && user.password !== ""){
-            return this.http.post(`${environment.serverUrl}/login`, {user}).pipe(tap(this.setSession), tap(data=>this.store.dispatch(ProblemActions.MyProblems({user: data.id}))), tap(data=> redirectFun(data, this.router)) , shareReplay());
+            return this.http.post(`/login`, {user}).pipe(tap(this.setSession), tap(data=>this.store.dispatch(ProblemActions.MyProblems({user: data.id}))), tap(data=> redirectFun(data, this.router)) , shareReplay());
         }
     }
     
@@ -41,7 +41,7 @@ export class AuthService{
         this.router.navigate([""])
     }
     register(user:User){
-        return this.http.post(`${environment.serverUrl}/register`, {user}).pipe(shareReplay())
+        return this.http.post(`/register`, {user}).pipe(shareReplay())
     }
     public isLoggedIn(){
         let islogged = moment().isBefore(this.getExpiration());
